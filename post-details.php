@@ -50,8 +50,8 @@ if (isset($_GET['post_id'])) {
   <link rel="stylesheet" href="css/style.css" media="screen">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
+  <link rel="icon" href="images/logo2.png" type="image/x-icon">
 
   <meta property="og:title" content="Reader | Hugo Personal Blog Template" />
   <meta property="og:description" content="This is meta description" />
@@ -65,14 +65,14 @@ if (isset($_GET['post_id'])) {
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white">
       <a class="navbar-brand order-1" href="index.php">
-        <img class="img-fluid" width="100px" src="images/logo.png">
+        <img class="img-fluid" width="150px" src="images/logo2.png">
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
         <ul class="navbar-nav mx-auto">
             <a class="nav-link" href="index.php">Home</a>
             
             <li class="nav-item">
-            <a class="nav-link" href="about-us.html">About Us</a>
+            <a class="nav-link" href="about-us.php">About Us</a>
           </li>
           </li>
 
@@ -122,22 +122,10 @@ if (isset($_GET['post_id'])) {
       </div>
 
       <div class="order-2 order-lg-3 d-flex align-items-center">
-        </select>
-        
         <!-- search -->
-        <form class="search-bar">
-          <input id="search-query" name="s" type="search" placeholder="Destination...">
+        <form class="search-bar mr-2 mb-0" role="search">
+          <input id="search-query" name="s" type="search" class="form-control" placeholder="Destination..." style="width:200px;">
         </form>
-        
-        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
-          <i class="ti-menu"></i>
-        </button>
-      </div>
-
-            <!-- login -->
-      <div class="login">
-        <a href="login.php" class="btn btn-outline-primary">Login</a>
-      </div>
 
     </nav>
   </div>
@@ -157,7 +145,7 @@ if (isset($_GET['post_id'])) {
           <h1 class="h2"><?php echo htmlspecialchars($post['title']); ?></h1>
           <ul class="card-meta my-3 list-inline">
             <li class="list-inline-item">
-<a href="author-single.html" class="card-meta-author">
+<a href="about-us.php" class="card-meta-author">
   <img src="images/profiles/<?php echo htmlspecialchars($post['profile_image'] ?: 'default.png'); ?>" alt="author" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
   <span><?php echo htmlspecialchars($post['username']); ?></span>
 </a>

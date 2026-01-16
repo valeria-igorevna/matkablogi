@@ -8,7 +8,7 @@ require_once __DIR__ . '/includes/database.php';
 
 <html lang="en-us"><head>
   <meta charset="utf-8">
-  <title>Serendipity</title>
+  <title>Cynefin</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -47,7 +47,7 @@ require_once __DIR__ . '/includes/database.php';
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
         <ul class="navbar-nav mx-auto">
-            <a class="nav-link" href="index.php">Home</a>
+            <a class="nav-link" href="index.php" style="font-weight:bold;">Home</a>
             
             <li class="nav-item">
             <a class="nav-link" href="about-us.php">About Us</a>
@@ -165,14 +165,8 @@ require_once __DIR__ . '/includes/database.php';
           </div>
           
           <div class="card-body">
-            <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">HELSINKI: Visit the happiest country in the world</a></h3>
+            <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">HELSINKI: Explore the capital of Finland</a></h3>
             <ul class="card-meta list-inline">
-              <li class="list-inline-item">
-                <a href="author-single.html" class="card-meta-author">
-                  <img src="images/john-doe.jpg">
-                  <span>Olivia Blake</span>
-                </a>
-              </li>
               <li class="list-inline-item">
                 <i class="ti-timer"></i>2 Min To Read
               </li>
@@ -258,12 +252,6 @@ require_once __DIR__ . '/includes/database.php';
             <h3 class="h4 mb-3"><a class="post-title" href="post-details.html">How To Not Fall Prey To Pickpocketing</a></h3>
             <ul class="card-meta list-inline">
               <li class="list-inline-item">
-                <a href="author-single.html" class="card-meta-author">
-                  <img src="images/kate-stone.jpg" alt="Kate Stone">
-                  <span>Caleb Altair</span>
-                </a>
-              </li>
-              <li class="list-inline-item">
                 <i class="ti-timer"></i>2 Min To Read
               </li>
               <li class="list-inline-item">
@@ -323,7 +311,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                  <!-- Optionally insert author or date here -->
       <ul class="card-meta list-inline">
         <li class="list-inline-item">
-          <a href="about-us.html" class="card-meta-author">
+          <a href="about-us.php" class="card-meta-author">
             <img src="images/profiles/<?php echo htmlspecialchars($row['profile_image'] ?: 'default.png'); ?>" alt="author" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
             <span><?php echo htmlspecialchars($row['username']); ?></span>
           </a>
@@ -379,37 +367,21 @@ while ($row = mysqli_fetch_assoc($result)) {
           <div class="widget widget-categories">
             <h4 class="widget-title"><span>Categories</span></h4>
             <ul class="list-unstyled widget-list">
-              <li><a href="tags.html" class="d-flex">Beach <small class="ml-auto">(4)</small></a></li>
-              <li><a href="tags.html" class="d-flex">City <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Hiking <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Food <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Couples <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Families <small class="ml-auto">(3)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Newyork city <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Paradise <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Scotland <small class="ml-auto">(2)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Helsinki <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">London <small class="ml-auto">(1)</small></a></li>
-              <li><a href="tags.html" class="d-flex">Packing Guide <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Beach <small class="ml-auto">(4)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">City <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Hiking <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Food <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Couples <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Families <small class="ml-auto">(3)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Newyork city <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Paradise <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Scotland <small class="ml-auto">(2)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Helsinki <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">London <small class="ml-auto">(1)</small></a></li>
+              <li><a href="index-grid.php" class="d-flex">Packing Guide <small class="ml-auto">(1)</small></a></li>
             </ul>
           </div>
-          <!-- tags -->
-          <div class="widget">
-            <h4 class="widget-title"><span>Tags</span></h4>
-            <ul class="list-inline widget-list-inline widget-card">
-              <li class="list-inline-item"><a href="tags.html">City</a></li>
-              <li class="list-inline-item"><a href="tags.html">Beach</a></li>
-              <li class="list-inline-item"><a href="tags.html">Helsinki</a></li>
-              <li class="list-inline-item"><a href="tags.html">Families</a></li>
-              <li class="list-inline-item"><a href="tags.html">Couples</a></li>
-              <li class="list-inline-item"><a href="tags.html">Packing Guide</a></li>
-              <li class="list-inline-item"><a href="tags.html">Hiking</a></li>
-              <li class="list-inline-item"><a href="tags.html">Food</a></li>
-              <li class="list-inline-item"><a href="tags.html">London</a></li>
-              <li class="list-inline-item"><a href="tags.html">Tech</a></li>
-              <li class="list-inline-item"><a href="tags.html">Paradise</a></li>
-            </ul>
-          </div>
+
           <!-- Social -->
           <div class="widget">
             <h4 class="widget-title"><span>Social Links</span></h4>
@@ -435,17 +407,9 @@ while ($row = mysqli_fetch_assoc($result)) {
           </ul>
         </div>
         <div class="col-md-2 text-center mb-4">
-          <a href="index.php"><img class="img-fluid" width="100px" src="images/logo.png" alt="Reader | Hugo Personal Blog Template"></a>
+          <a href="index.php"><img class="img-fluid" width="150px" src="images/logo2.png" alt="Cynefin | Travel Blog official logo"></a>
         </div>
-        <div class="col-md-5 text-md-right text-center mb-4">
-          <ul class="list-inline footer-list mb-0">
-            <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
-          </ul>
-        </div>
+       
         <div class="col-12">
           <div class="border-bottom border-default"></div>
         </div>

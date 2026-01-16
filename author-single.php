@@ -134,7 +134,7 @@ if (!$user) {
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white">
       <a class="navbar-brand order-1" href="index.php">
-        <img class="img-fluid" width="100px" src="images/logo.png">
+        <img class="img-fluid" width="150px" src="images/logo2.png">
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
         <ul class="navbar-nav mx-auto">
@@ -191,22 +191,14 @@ if (!$user) {
       </div>
 
       <div class="order-2 order-lg-3 d-flex align-items-center">
-        </select>
-        
         <!-- search -->
-        <form class="search-bar">
-          <input id="search-query" name="s" type="search" placeholder="Destination...">
+        <form class="search-bar mr-2 mb-0" role="search">
+          <input id="search-query" name="s" type="search" class="form-control" placeholder="Destination..." style="width:200px;">
         </form>
-        
-        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
-          <i class="ti-menu"></i>
-        </button>
+
+        <!-- logout button -->
+        <a class="btn btn-outline-primary ml-2" href="logout.php">Logout</a>
       </div>
-
-  <li class="logout">
-    <a class="btn btn-outline-primary" href="logout.php">Logout</a>
-  </li>
-
     </nav>
   </div>
 </header>

@@ -15,7 +15,7 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
 
 <html lang="en-us"><head>
   <meta charset="utf-8">
-  <title>Live | Exploring the World</title>
+  <title>Cynefin | Exploring the World</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -35,8 +35,8 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
   <link rel="stylesheet" href="css/style.css" media="screen">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
+  <link rel="icon" href="images/logo2.png" type="image/x-icon">
 
   <meta property="og:title" content="Reader | Hugo Personal Blog Template" />
   <meta property="og:description" content="This is meta description" />
@@ -50,11 +50,11 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white">
       <a class="navbar-brand order-1" href="index.php">
-        <img class="img-fluid" width="100px" src="images/logo.png">
+        <img class="img-fluid" width="150px" src="images/logo2.png">
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
         <ul class="navbar-nav mx-auto">
-            <a class="nav-link" href="index.php">Home</a>
+            <a class="nav-link" href="index.php" style="font-weight:bold;">Home</a>
             
             <li class="nav-item">
             <a class="nav-link" href="about-us.html">About Us</a>

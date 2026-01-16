@@ -50,7 +50,7 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
 
 <html lang="en-us"><head>
   <meta charset="utf-8">
-  <title>Live | Exploring the World</title>
+  <title>Cynefin | Exploring the World</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -70,8 +70,8 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
   <link rel="stylesheet" href="css/style.css" media="screen">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-  <link rel="icon" href="images/logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
+  <link rel="icon" href="images/logo2.png" type="image/x-icon">
 
   <meta property="og:title" content="Reader | Hugo Personal Blog Template" />
   <meta property="og:description" content="This is meta description" />
@@ -85,7 +85,7 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white">
       <a class="navbar-brand order-1" href="index.php">
-        <img class="img-fluid" width="100px" src="images/logo.png">
+        <img class="img-fluid" width="150px" src="images/logo2.png">
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
         <ul class="navbar-nav mx-auto">
@@ -139,24 +139,15 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
         </ul>
       </div>
 
-      <div class="order-2 order-lg-3 d-flex align-items-center">
-        </select>
-        
+<div class="order-2 order-lg-3 d-flex align-items-center">
         <!-- search -->
-        <form class="search-bar">
-          <input id="search-query" name="s" type="search" placeholder="Destination...">
+        <form class="search-bar mr-2 mb-0" role="search">
+          <input id="search-query" name="s" type="search" class="form-control" placeholder="Destination..." style="width:200px;">
         </form>
-        
-        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
-          <i class="ti-menu"></i>
-        </button>
+
+        <!-- logout button -->
+        <a class="btn btn-outline-primary ml-2" href="logout.php">Logout</a>
       </div>
-
-            <!-- logout -->
-     <li class="logout">
-    <a class="btn btn-outline-primary" href="logout.php">Logout</a>
-  </li>
-
     </nav>
   </div>
 </header>

@@ -158,20 +158,13 @@ if (isset($_POST['submit'])) {
 
       <div class="order-2 order-lg-3 d-flex align-items-center">
         <!-- search -->
-        <form class="search-bar">
-          <input id="search-query" name="s" type="search" placeholder="Destination...">
+        <form class="search-bar mr-2 mb-0" role="search">
+          <input id="search-query" name="s" type="search" class="form-control" placeholder="Destination..." style="width:200px;">
         </form>
-        
-        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
-          <i class="ti-menu"></i>
-        </button>
+
+        <!-- logout button -->
+        <a class="btn btn-outline-primary ml-2" href="logout.php">Logout</a>
       </div>
-
-      <!-- logout -->
-      <li class="logout">
-        <a class="btn btn-outline-primary" href="logout.php">Logout</a>
-      </li>
-
     </nav>
   </div>
 </header>
