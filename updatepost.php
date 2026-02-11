@@ -32,7 +32,7 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
     exit();
 }
 
-// Fetch the post data
+// Hakee alkuperäiset tiedot tietokannasta
 $post_sql = "SELECT * FROM post WHERE id = '$post_id'";
 $post_result = mysqli_query($conn, $post_sql);
 
@@ -42,7 +42,7 @@ if ($post_result && mysqli_num_rows($post_result) > 0) {
     $excerpt_value = htmlspecialchars($post_data['excerpt']);
     $content_value = htmlspecialchars($post_data['content']);
     $category_id_value = $post_data['category_id'];
-    $image_value = $post_data['image']; // assuming your post table has an image column
+    $image_value = $post_data['image'];
 } else {
     echo "Post not found.";
     exit();
@@ -81,8 +81,7 @@ if (isset($_POST['submit'])) {
 
     $result2 = mysqli_query($conn, $sql2);
     if ($result2) {
-        echo "Update OK"; // You can replace this with a redirect or success message
-        // header("Location: author-single.php"); // for example
+        echo "Location: author-single.php";
     } else {
         echo "Error updating post: " . $conn->error;
     }
@@ -158,20 +157,13 @@ if (isset($_POST['submit'])) {
 
       <div class="order-2 order-lg-3 d-flex align-items-center">
         <!-- search -->
-        <form class="search-bar">
-          <input id="search-query" name="s" type="search" placeholder="Destination...">
+        <form class="search-bar mr-2 mb-0" role="search">
+          <input id="search-query" name="s" type="search" class="form-control" placeholder="Destination..." style="width:200px;">
         </form>
-        
-        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
-          <i class="ti-menu"></i>
-        </button>
+
+        <!-- logout button -->
+        <a class="btn btn-outline-primary ml-2" href="logout.php">Logout</a>
       </div>
-
-      <!-- logout -->
-      <li class="logout">
-        <a class="btn btn-outline-primary" href="logout.php">Logout</a>
-      </li>
-
     </nav>
   </div>
 </header>

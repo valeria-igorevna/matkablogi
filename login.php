@@ -1,13 +1,13 @@
 <?php
 session_start();
-require_once __DIR__ . '/includes/database.php'; // your $conn (mysqli)
+require_once __DIR__ . '/includes/database.php';
 
 if (isset($_POST['submit'])) {
     // Sanitize input
     $username = trim($_POST['user']);
     $password = trim($_POST['pass']);
 
-    // Prepare statement to prevent SQL injection
+    //Toiminto estämään SQL injektioita
     $stmt = $conn->prepare("SELECT id, username, password, role FROM user WHERE username = ? /*LIMIT 1*/");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         $row = $result->fetch_assoc();
         $stored = $row['password'];
 
-        // Normal (hashed) verification
+        // Hash-salasanat
         if (password_verify($password, $stored)) {
             // If algorithm changed, rehash and update
             if (password_needs_rehash($stored, PASSWORD_DEFAULT)) {
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
                 $upd->close();
             }
 
-            // Successful login
+            // Onnistunut sisäänkirjautuminen
             session_regenerate_id(true);
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['username'];
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
             header("Location: author-single.php");
             exit();
 
-            /*
+            // ÄLÄ VIELÄ POISTA, ei toimi uusien käyttäjien kohdalla - pitää selvittää tulevaisuudessa
             // Optional: plaintext-password migration fallback (remove after migration)
         } elseif (hash_equals($stored, $password)) {
             // Plaintext in DB, and input matches — migrate to a secure hash
@@ -46,14 +46,14 @@ if (isset($_POST['submit'])) {
             $upd->execute();
             $upd->close();
 
-            // Successful login after migration
+            // Onnistunut sisäänkirjautuminen migraation jälkeen
             session_regenerate_id(true);
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['username'];
             $_SESSION['user_role'] = $row['role'];
             header("Location: author-single.php");
             exit();
-            */
+            
 
         } else {
             $error = "Invalid username or password.";
@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
-  <title>Live | Exploring the World</title>
+  <title>Cynefin | Exploring the World</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="This is meta description">
   <meta name="author" content="Themefisher">
@@ -81,8 +81,8 @@ if (isset($_POST['submit'])) {
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css" media="screen">
   <!--Favicon-->
-  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-  <link rel="icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
+  <link rel="icon" href="images/logo2.png" type="image/x-icon">
   <meta property="og:title" content="Reader | Hugo Personal Blog Template" />
   <meta property="og:description" content="This is meta description" />
   <meta property="og:type" content="website" />
@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white">
       <a class="navbar-brand order-1" href="index.php">
-        <img class="img-fluid" width="100px" src="images/logo.png"
+        <img class="img-fluid" width="150px" src="images/logo2.png"
           alt="Reader | Hugo Personal Blog Template">
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
@@ -119,7 +119,7 @@ if (isset($_POST['submit'])) {
       <div class="col-lg-9 mx-auto">
         <h1 class="mb-4">Login</h1>
         <ul class="list-inline">
-          <li class="list-inline-item"><a class="text-default" href="index.php">Home
+          <li class="list-inline-item"><a class="text-default" href="index.php" style="font-weight:bold;">Home
               &nbsp; &nbsp; /</a></li>
           <li class="list-inline-item text-primary">Login</li>
         </ul>

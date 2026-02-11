@@ -1,56 +1,20 @@
 <?php
 session_start();
-$user_id = $_SESSION['user_id'];
 //include "database.php";
 require_once __DIR__ . '/includes/database.php';
-
-if (!isset($_SESSION['user_id'])){
-    header("Location: login.php");
-//    exit();
-}else{
-// Only authors and admins can create posts
-if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
-        $sql = "select * from categories";
-        $result = mysqli_query($conn, $sql);
-        if(!$result){
-            echo "Error!: {$conn->error}";
-        }else{
-          if(isset($_POST['submit'])){
-          $title = $_POST['title'];
-          $excerpt = $_POST['excerpt'];
-          $content = $_POST['content'];
-          $categories_name = $_POST['categories_name'];
-          $name = $_FILES['image']['name'];
-          $temp_location = $_FILES['image']['tmp_name'];
-          $our_location = "images/post/";
-             if(!empty($name)){
-                move_uploaded_file($temp_location, $our_location.$name);
-            }
-          $sql1 = "SELECT id FROM categories WHERE name = '$categories_name'"; 
-          $result1 = mysqli_query($conn, $sql1);
-          if($result1->num_rows>0){
-          $row = mysqli_fetch_assoc($result1);
-          $idforcategory = $row['id'];
-          }
-          $sql2 = "INSERT INTO post(title, excerpt, content, author_id, category_id, categories_name, image)VALUES('$title', '$excerpt', '$content', '$user_id', '$idforcategory', '$categories_name', '$name')";
-          $result2 = mysqli_query($conn, $sql2);
-          if($result2){
-          echo"post OK"; //POISTA TAI KORVAA TÄMÄ TEKSTI MYÖHEMMIN!!!
-          }
-          }
-        }
-        }else{
-        header("location: login.php");
-    }
+$post_id = $_GET['post_id'];
+$sql = "delete from post where id = '$post_id'";
+$result = mysqli_query($conn, $sql);
+if(!$result){
+    echo "error!: {$conn->error}";
 }
 ?>
-
 
 <!DOCTYPE html>
 
 <html lang="en-us"><head>
   <meta charset="utf-8">
-  <title>Cynefin | Exploring the World</title>
+  <title>Live | Exploring the World</title>
 
   <!-- mobile responsive meta -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -70,8 +34,8 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
   <link rel="stylesheet" href="css/style.css" media="screen">
 
   <!--Favicon-->
-  <link rel="shortcut icon" href="images/logo2.png" type="image/x-icon">
-  <link rel="icon" href="images/logo2.png" type="image/x-icon">
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
 
   <meta property="og:title" content="Reader | Hugo Personal Blog Template" />
   <meta property="og:description" content="This is meta description" />
@@ -84,15 +48,15 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
 <header class="navigation fixed-top">
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-white">
-      <a class="navbar-brand order-1" href="index.php">
-        <img class="img-fluid" width="150px" src="images/logo2.png">
+      <a class="navbar-brand order-1" href="index.html">
+        <img class="img-fluid" width="100px" src="images/logo.png">
       </a>
       <div class="collapse navbar-collapse text-center order-lg-2 order-3" id="navigation">
         <ul class="navbar-nav mx-auto">
             <a class="nav-link" href="index.php">Home</a>
             
             <li class="nav-item">
-            <a class="nav-link" href="about-us.php">About Us</a>
+            <a class="nav-link" href="about-us.html">About Us</a>
           </li>
           </li>
 
@@ -139,15 +103,24 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
         </ul>
       </div>
 
-<div class="order-2 order-lg-3 d-flex align-items-center">
+      <div class="order-2 order-lg-3 d-flex align-items-center">
+        </select>
+        
         <!-- search -->
-        <form class="search-bar mr-2 mb-0" role="search">
-          <input id="search-query" name="s" type="search" class="form-control" placeholder="Destination..." style="width:200px;">
+        <form class="search-bar">
+          <input id="search-query" name="s" type="search" placeholder="Destination...">
         </form>
-
-        <!-- logout button -->
-        <a class="btn btn-outline-primary ml-2" href="logout.php">Logout</a>
+        
+        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
+          <i class="ti-menu"></i>
+        </button>
       </div>
+
+            <!-- logout -->
+     <li class="logout">
+    <a class="btn btn-outline-primary" href="logout.php">Logout</a>
+  </li>
+
     </nav>
   </div>
 </header>
@@ -157,37 +130,17 @@ if ($_SESSION['user_role'] == "author" || $_SESSION['user_role'] == "admin") {
   <div class="container">
     <div class="row">
       <div class="col-lg-9 mx-auto">
-        <h1 class="mb-4">Tell Your Story</h1>
+        <h1 class="mb-4">Post has been deleted</h1>
         <ul class="list-inline">
           <li class="list-inline-item"><a class="text-default" href="author-single.php">Back to Profile
               &nbsp; &nbsp; /</a></li>
-          <li class="list-inline-item text-primary">Create a post</li>
+          <li class="list-inline-item text-primary"><a class="text-default" href="post.php">Create a new post</li></a>
         </ul>
       </div>
     </div>
   </div>
 
 
-<!--Post Form-->
-<div class="post">
-  <form action="post.php" method="post" enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Enter post title" required>
-    <input type="text" name="excerpt" placeholder="A short summary of your post...">
-    <textarea name="content" placeholder="Write your blog post here..." required></textarea>
-    
-    <!-- Categories Dropdown -->
-     <h4>Select a category</h4>
-    <select name="categories_name" required>
-    <?php while ($row = mysqli_fetch_assoc($result)){ ?>
-      <option value="<?php echo "{$row['name']}";?>"><?php echo "{$row['name']}";?></option>
-          <?php } 
-    ?>
-    </select>
-    
-    <input type="file" class="post-image" name="image" required>
-    <button class="btn btn-outline-primary" type="submit" name="submit">Publish</button>
-  </form>
-</div>
 
 
 
